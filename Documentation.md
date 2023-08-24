@@ -4,7 +4,7 @@ Jenkins EC2 Instance Deployment
 Purpose:
 
 
-Previously, applications were hosted on EC2's that were either manually set up, or set up 
+Previously, applications were hosted on EC2's that were manually set up by instructor 
 EC2 instance steps
 
 Github steps
