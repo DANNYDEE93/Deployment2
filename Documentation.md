@@ -149,5 +149,4 @@ _______________________________
 ____________________________________
 - #### TROUBLESHOOTING:
 ____________________________________
-      My first attempt to create my Jenkins account, I skipped the option to create "Admin Username and Password". I was able to upload my build but the build was unsuccessuful. In order to troubleshoot this issue, **Steps 1-5** under **BUILD & TEST**. 
-      I had to create a new EC2 instance, establish a new connection with my Jenkins server, get admin password from EC2 to create a new Jenkins admin account, install the necessary "Pipeline Utillity Steps" on top of the suggested plugins, and connect to my GitHub repository to upload my Jenkins code to build and test my application in a staging environment.
+My first attempt to create my Jenkins account, I skipped the option to create "Admin Username and Password". I was able to upload my build but the build was unsuccessuful. In order to troubleshoot this issue, **Steps 1-5** under **BUILD & TEST**. I had to create a new EC2 instance, establish a new connection with my Jenkins server, get admin password from EC2 to create a new Jenkins admin account, install the necessary "Pipeline Utillity Steps" on top of the suggested plugins, and connect to my GitHub repository to upload my Jenkins code to build and test my application in a staging environment.
