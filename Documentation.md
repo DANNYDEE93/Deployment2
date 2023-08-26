@@ -1,26 +1,26 @@
 ## Deployment 2: Jenkins EC2 Instance Deployment
 _________________________________________________
   ##### August 23, 2023
-
 ______________________________________
-
-
 ### PURPOSE:
 ___________________
 - To provision a Jenkins server through a newly created AWS EC2 instance with necessary protocols, permissions and downloaded applicaitons to successfully deploy web application. I previously used my instructor's Jenkins browser. Establishing my own Jenkins web browser and server gives me admin access over my own Jenkins browser and the ability to customize plugins for staging my virtual environment.
-- Even though my AWS account already includes the correct security group protocols, creating and launching my own EC2 instance also provides me the ability to customize my own instance with the necessary security groups to establish SSH protocols for remote access between my EC2 and Jenkins web server, as well as HTTP protocols so that AWS can use its resources to unecrypt my web application for deployment through my public IP address from my EC2 instance. 
+  
+- Even though my AWS account already includes the correct security group protocols, creating and launching my own EC2 instance also provides me the ability to customize my own instance with the necessary security groups to establish SSH protocols for remote access between my EC2 and Jenkins web server, as well as HTTP protocols so that AWS can use its resources to unecrypt my web application for deployment through my public IP address from my EC2 instance.
+  
 - Learning these fundamental steps gives me practice in how to start the steps in procurring my CICD pipeline for automating and scaling my deployment process in the future. Ensuring my skills to build my staging environment will help me ensure that my deployment is tested properly for high quality user experience, adequate server connection, and shows me the safest way to make sure that my web applications and servers will be ready before deployment for my future production environments.
 _______________________
 #### DESCRIPTION:
 __________________________
-- This project began diagramming the plan for my deployment in Draw.io including how I would use **GitHub**, **Jenkins**, and **AWS Elastic Beanstalk**. I continued to plan and build within a previously created Jenkins account by my instructor. Jenkins allowed me to create and test my deployment in a staging environment to ensure that it would return a 200 response from the server once deployed. Once my build passed the test phase in Jenkins, I created IAM roles and an EC2 instance through Elasticn Beanstalk. This allowed AWS access with the necessary permissions to update and launch my deployment through the IAM roles of **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**. 
+- This project began diagramming the plan for my deployment in Draw.io including how I would use **GitHub**, **Jenkins**, and **AWS Elastic Beanstalk**. I continued to plan and build within a previously created Jenkins account by my instructor. Jenkins allowed me to create and test my deployment in a staging environment to ensure that it would return a 200 response from the server once deployed. Once my build passed the test phase in Jenkins, I created IAM roles and an EC2 instance through Elasticn Beanstalk. This allowed AWS access with the necessary permissions to update and launch my deployment through the IAM roles of **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**.
+  
 - After recieving a **Health status of Degraded**, I went into the Logs and found the issue in **/var/log/web.stdout.log** that showed the name of the application file containing my Python code was typed incorretly. Once I rectified the issue, Elastic Beanstalk was able to read my deployment properly. Finally, the EC2 instance created an applicable production environment to deploy my web applicaiton successfully. 
 
 ____________________________________
 ###### **Below you will find the necessary steps that I took to provision my own Jenkins server for my staging environment and to provosion my production environment to deploy my web applicaiton:** 
 
 _____________________________________
-- #### **PLAN & CODE**
+- ## **PLAN & CODE**
 _______________________
 
 **1. Diagram the plan for deployment on Draw.io:**
@@ -42,7 +42,7 @@ _______________________
 8. Upload Kura Lab repository files into new GitHub repository created in **Step 3**
 _______________________________
 
-- #### **BUILD & TEST**
+- ## **BUILD & TEST**
 _________________________
    
 **Create Build in Jenkins to test application in staging environment:**
@@ -103,7 +103,7 @@ ________________________________________________________________________________
 
 _______________________
 
-- ### **MERGE**
+- ## **MERGE**
 ___________________
 
 *[Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk]*
@@ -115,7 +115,7 @@ ___________________
 *[[After checking the console output responses and passing the test phase in Jenkins, you can go on to creating **IAM Roles** and the **Python Url Shortener** through **AWS Elastic Beanstalk**]]*
 
 ___________________________________________
-- ### **BUILD, TEST, DEPLOY**
+- ## **BUILD, TEST, DEPLOY**
 _______________________________
 
 **Navigating through AWS Elastic Beanstalk**
@@ -147,6 +147,6 @@ _______________________________
 ![success2](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/successful%20deployment%20of%20web%20app.png) 
 
 ____________________________________
-- #### TROUBLESHOOTING:
+- ### TROUBLESHOOTING:
 ____________________________________
 My first attempt to create my Jenkins account, I skipped the option to create "Admin Username and Password". I was able to upload my build but the build was unsuccessuful. In order to troubleshoot this issue, **Steps 1-5** under **BUILD & TEST**. I had to create a new EC2 instance, establish a new connection with my Jenkins server, get admin password from EC2 to create a new Jenkins admin account, install the necessary "Pipeline Utillity Steps" on top of the suggested plugins, and connect to my GitHub repository to upload my Jenkins code to build and test my application in a staging environment.
