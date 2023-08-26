@@ -50,9 +50,9 @@ _________________________
 
    (1a.) Press **Instances** in the Dashboard --> Press **Launch Instance** button--> Name web server --> Select **Ubuntu** for OS --> Select **t2.micro** --> Select suggested key pair --> Select security groups that include: Port 22, 80 & 8080 under "Network Settings" (selected existing group with these protocols) --> Press **Launch Instance**  
 
-2. Within my EC2 instance: Download newest version of Python and Jenkins --> Copy and Paste ip address of EC2 and add port 80 [**ip.address:80**] to access web browser with Jenkins.
+2. Within my EC2 instance: Download newest version of Python and Jenkins --> (*proceed to Jenkins*) Copy and Paste ip address of EC2 and add port 80 [**ip.address:80**] to access web browser with Jenkins. 
 
-3. The web browser will show the location of admin passwrd --> Go back to EC2 and type **"sudo cat /var/lib/jenkins/secrets/initialAdminPassword"**
+3. (*proceed to EC2*) The web browser will show the location of admin passwrd --> Go back to EC2 and type **"sudo cat /var/lib/jenkins/secrets/initialAdminPassword"** (*proceed back to Jenkins*)
 
    ![Jenkins access](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/sudo%20cat%20admin%20psswrd.png)
 
@@ -60,11 +60,11 @@ _________________________
    
     ![Pipleline](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Download%20plugins%20for%20environment.png)
    
-5. Press **New Item** tab to create new pipeline build --> Name pipeline "First name, Last name initial" --> Select Pipeline script from SCM --> Choose Git in the dropdown from SCM --> Go back to newly created GitHub repository and copy the HTTP code or URL of the repository --> Paste code into "Repository line" in Jenkins
-_____________________________________________________________________________________________________________________________________
-*Switch to Github*
+5. Press **New Item** tab to create new pipeline build --> Name pipeline "First name, Last name initial" --> Select Pipeline script from SCM --> Choose Git in the dropdown from SCM
+____________________________________________________
+*Switch to Github* --> Go back to newly created GitHub repository and copy the HTTP code or URL of the repository --> Paste code into "Repository line" in Jenkins
 
-**[Create token for Jenkins using GitHub account:]**
+**Create token for Jenkins using GitHub account:**
 
 6. Go back to your GitHub and press profile picture/icon
 
@@ -73,28 +73,26 @@ ________________________________________________________________________________
 8. Select **Generate new token**-->**Generate new token (classic)**-->Sign into GitHub if prompted
 
 9. Create note description-->Select scopes: **repo** and **admin repo** to give full access to repository.
-
-10. Click **Generate token**--> Copy and paste link into **password line** in Jenkins
-
-*Switch back to Jenkins*
+_____________________________________
+10. *Switch back to Jenkins* --> Click **Generate token**--> Copy and paste link into **password line** in Jenkins
 
 11. Continue on Jenkins-->Add token associated with repository--> Select main branch
 
 12. Submit to generate build and select **Build Now** and pass staging environment in Jenkins
 
 **Check console output responses and check the phases of testing and passing the staging environment.**
-
+_______________________________________________
 *Unzipping application code file in EC2 instance*
 
 13. For this deployment, there was an included packaging/zip command within my application code that compressed my GitHub file. Under the packaging phase in the console output, the location of the file within the EC2 home directory was given:
 
   ![1](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20file%20location%20.png)
 
-14. [Locating the file and unzipping the package makes it easily readable, you can make sure that it was properly packaged, and that you can have a shorter access path for each file]
+*Locating the file and unzipping the package makes it easily readable, you can make sure that it was properly packaged, and that you can have a shorter access path for each file*
 
-15. Go back to EC2 and **cd /var/lib/jenkins/workspace/Deployment2/build/1.0.0.1.zip**
+14. Go to EC2 and **cd /var/lib/jenkins/workspace/Deployment2/build/1.0.0.1.zip**
 
-16. Download unzip: **sudo apt unzip** --> then use the "unzip" command on the "1.0.0.1.zip" file to extract files through the EC2
+15. Download unzip: **sudo apt unzip** --> then use the "unzip" command on the "1.0.0.1.zip" file to extract files through the EC2
 
   ![2](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20zip%20file_2.png)
 
