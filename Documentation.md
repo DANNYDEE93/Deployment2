@@ -44,7 +44,7 @@ _________________________
    
 <ins> **Create Build in Jenkins to test application in staging environment:** </ins>
 
-*Jenkins is the main tool used in this deployment for pulling the program from the GitHub repository to build, test, and analyze the application before deploying*
+***Jenkins is the main tool used in this deployment for pulling the program from the GitHub repository to build, test, and analyze the application before deploying***
 
 1. Launch an EC2 with the necessary protocols to connect to my Jenkins server and web browser and create an account with admin access to utilize my Jenkins account on my own:
 
@@ -101,7 +101,7 @@ _______________________
 ## <ins> **MERGE** </ins>
 ___________________
 
-<ins>**Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk**</ins>
+<ins> **Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk** </ins>
 
 1. Create zip file folder in your File Explorer **[Windows OS]** to compress your GitHub repository. This new compressed zip file should not exceed 500 MB and should not include parent folder from your original repository to ensure that all characters in file are configured correctly in Elastic Beanstalk. You will need to extract files from the folder and create a new compressed zip file like in <ins>**Step 7** under **PLAN & CODE**</ins>
 
@@ -113,9 +113,9 @@ ___________________________________________
 ## <ins>**BUILD, TEST, DEPLOY**</ins>
 _______________________________
 
-<ins>**Navigating through AWS Elastic Beanstalk**</ins>
+<ins> **Navigating through AWS Elastic Beanstalk** </ins>
 
-*<ins>**Create IAM Roles**</ins>*
+<ins> **Create IAM Roles** </ins>
 
 1. Sign into AWS with appropriate Account ID, IAM user name, and password
     
@@ -123,15 +123,15 @@ _______________________________
     
 3. To create the second and third role: Click **Create Role**--> Select **AWS service** for trusted entity type--> Click **EC2** under common use cases--> Click Next--> Under Permission policies: Select **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**--> Click Next--> Enter **Elastic-EC2** in **Role name** field--> Click **Create Role**
     
-[**These roles allow the instances in my web server environment to access and upload necessary files with AWS resources and grants permission for Amazon Elastic Container Service to organize and cluster task within container environments.**]
+***These roles allow the instances in my web server environment to access and upload necessary files with AWS resources and grants permission for Amazon Elastic Container Service to organize and cluster task within container environments.***
 
-*<ins>**Create and deploy a Python URL shortener**</ins>*
+<ins>**Create and deploy a Python URL shortener**</ins>
 
 4. Select **Create Application**--> Name application **URL-shortener**--> Select **Python** in Platform dropdown--> Select **Python 3.9 running on 64bit Amazon Linux 2023** in Platform branch dropdown-->Select **Upload your code**--> Type **V1** in version label field--> **Upload** the compressed zip file of your repository -->Click **Next**
 
 5. Select **ElasticEC2** in EC2 instance profile dropdown--> Click **Next**--> Select default VPC in VPC dropdown--> Select **us-east-1a** availability zone--> Click **Next**--> Select **General Purpose (SSD)** in Root Volume type drop down--> Change the size field to 10GB--> Select **ONLY "T2.MICRO"** under **Instance Types** and **DESELECT** any other choices--> Click **Next**--> Click **Next**--> Click **Submit**
     
-[**The URL shortener reduces the number of characters in a URL so that it is easier for Elastic Beanstalk to read, remember, and share your web service and application. AWS Elastic Beanstalk makes it easier for developers to quickly deploy and manage these applications.**]
+***The URL shortener reduces the number of characters in a URL so that it is easier for Elastic Beanstalk to read, remember, and share your web service and application. AWS Elastic Beanstalk makes it easier for developers to quickly deploy and manage these applications.***
 
 6. Wait for **Elastic Beanstalk** to launch virtual production environment:
 
