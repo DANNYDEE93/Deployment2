@@ -7,7 +7,7 @@
 
 ### [Description]
 
-This project began diagramming the plan for my deployment in Draw.io including how I would use **GitHub**, **Jenkins**, and **AWS Elastic Beanstalk**. I continued to plan and build within a previously created Jenkins account by my instructor. Jenkins allowed me to create and test my deployment in a staging environment to ensure that it would return a 200 response from the server once deployed. Once my build passed the test phase in Jenkins, I created IAM roles and an EC2 instance through Elasticn Beanstalk. This allowed AWS access with the necessary permissions to update and launch my deployment through the IAM roles of **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**. After recieving a **Health status of Degraded**, I went into the Logs and found the issue in **/var/log/web.stdout.log** that showed the name of the application file containing my Python code was typed incorretly. Once I rectified the issue, Elastic Beanstalk was able to read my deployment properly. Finally, the EC2 instance created an applicable production environment to deploy my web applicaiton successfully. 
+- This project began diagramming the plan for my deployment in Draw.io including how I would use **GitHub**, **Jenkins**, and **AWS Elastic Beanstalk**. I continued to plan and build within a previously created Jenkins account by my instructor. Jenkins allowed me to create and test my deployment in a staging environment to ensure that it would return a 200 response from the server once deployed. Once my build passed the test phase in Jenkins, I created IAM roles and an EC2 instance through Elasticn Beanstalk. This allowed AWS access with the necessary permissions to update and launch my deployment through the IAM roles of **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**. After recieving a **Health status of Degraded**, I went into the Logs and found the issue in **/var/log/web.stdout.log** that showed the name of the application file containing my Python code was typed incorretly. Once I rectified the issue, Elastic Beanstalk was able to read my deployment properly. Finally, the EC2 instance created an applicable production environment to deploy my web applicaiton successfully. 
 
 ###### [Below you will find the necessary steps that I took to provision my own Jenkins server for my staging environment and to provosion my production environment to deploy my web applicaiton:]** 
 
@@ -15,34 +15,34 @@ This project began diagramming the plan for my deployment in Draw.io including h
 
 1. Diagram the plan for deployment on Draw.io:
 
-![Plan][https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Plan%20for%20deployment%202.jpg]
+![Plan](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Plan%20for%20deployment%202.jpg)
    
 2. Log into GitHub account
 3. Create new GitHub repository
 4. Create **Documentation.md** file to record the staging and production environment of deployment
 5. Open Kura Labs c4 Deployment-1 repository and follow the provided instructions
 6. Press the **Code** tab and download files from Kura Labs repository
-7. Unzip files by extracting Kura Lab files from the folder populated in your terminal in order for them to upload properly onto your GitHub repository 
+7. Unzip files by extracting Kura Lab files from the folder populated in your terminal in order to separate them from their parent folder and re-compress them into a new folder excluding that parent folder so that GitHub can read it properly and upload.
 8. Upload Kura Lab repository files into new GitHub repository created in **Step 3**
 
 ### **[BUILD & TEST]**
    
-**9. [Create Build in Jenkins:]**
+**[Create Build in Jenkins:]**
 
-[Launch an EC2 with the necessary protocols to connect to my establish Jenkins server and web browser to provide me with admin access to utiilize my Jenkins account on my own]
+[Jenkins is the main tool used in this deployment for pulling the program from the GitHub repository to build, test, and analyze the application before deploying]
 
-1. Press **Instances** in the Dashboard --> Press **Launch Instance** button--> Name web server --> Select **Ubuntu** for OS --> Select **t2.micro** --> Select suggested key pair --> Select security groups that include: Port 22, 80 & 8080 under "Network Settings" (selected exisitng group with these protocols) --> Press **Launch Instance**
+1. [Launch an EC2 with the necessary protocols to connect to my Jenkins server and web browser and create an account with admin access to utiilize my Jenkins account on my own:
 
-[Jenkins is the main tool used in this deployment for pulling the program from the GitHub repository, then building, testing, and deploying it to a server.]  
+  - 1a. Press **Instances** in the Dashboard --> Press **Launch Instance** button--> Name web server --> Select **Ubuntu** for OS --> Select **t2.micro** --> Select suggested key pair --> Select security groups that include: Port 22, 80 & 8080 under "Network Settings" (selected exisitng group with these protocols) --> Press **Launch Instance**  
 
 2. Within my EC2 instance: Download newest version of Python and Jenkins --> Copy and Paste ip address of EC2 and add port 80 to access web browser with Jenkins.
 3. The web browser will show the location of admin passwrd --> Go back to EC2 and type "sudo cat /var/lib/jenkins/secrets/initialAdminPassword"
 
-   ![https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/sudo%20cat%20admin%20psswrd.png]
+   ![Jenkins access](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/sudo%20cat%20admin%20psswrd.png)
 
 5. Copy and paste admin password into Jenkins browser--> Create admin account-->Install suggested plugins --> Go to **Available plugins** in the settings--> Install **Pipeline Utility Steps** --> Soft restart the browser --> Sign back into Jenkins account
    
-    ! [https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Download%20plugins%20for%20environment.png]
+    ![Pipleline](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Download%20plugins%20for%20environment.png)
    
 5. Press **New Item** tab to create new pipeline build --> Name pipeline "First name, Last name initial" --> Select Pipeline script from SCM --> Choose Git in the dropdown from SCM --> Go back to newly created GitHub repository and copy the HTTP code or URL of the repository --> Paste code into "Repsitory line" in Jenkins
 
@@ -56,27 +56,28 @@ This project began diagramming the plan for my deployment in Draw.io including h
 12. Continue on Jenkins-->Add token associated with repository--> Select main branch
 13. Submit to generate build and select **Build Now** and pass staging environment in Jenkins
 
-### **[MERGE]**
-
-[[Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk]]
-
-14. Create zip file folder in your File Explorer **[Windows OS]** to compress your GitHub repository. This new compressed zip file should not exceed 500 MB and should not include parent folder from your original repository to ensure that all characters in file are configured correctly in Elastic Beanstalk. You will need to extract files from the folder and create a new compressed zip file like in **Step 7**
-15. Select files within the downloaded file of your repository and transfer them into a new compressed zip folder. This ensures that the files are zipped to Elastic Beanstalk's standards.
-
 [Check console output responses and check the phases of testing and passing the staging environment.]
 
-16. For theis deployment, there was an included packaging/zip command within my applicaion code that compressed my GitHub file. Under the packaging phase in the console output, the location of the file within the EC2 home directory was given:
+14. For theis deployment, there was an included packaging/zip command within my applicaion code that compressed my GitHub file. Under the packaging phase in the console output, the location of the file within the EC2 home directory was given:
 
-17. ![https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20file%20location%20.png]
+15. ![https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20file%20location%20.png]
 
 [Locating the file and unzipping the package makes it easily readable and you can make sure that it waas properly packaged]
 
-18. Go back to EC2 and **cd /var/lib/jenkins/workspace/Deployment2/build/1.0.0.1.zip**
-19. Download unzip: **sudo apt unzip** --> then use the "unzip" command on the "1.0.0.1.zip" file
+16. Go back to EC2 and **cd /var/lib/jenkins/workspace/Deployment2/build/1.0.0.1.zip**
+17. Download unzip: **sudo apt unzip** --> then use the "unzip" command on the "1.0.0.1.zip" file
 
-20. ! [https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20zip%20file_2.png]
+18. ! [https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20zip%20file_2.png]
 
+### **[MERGE]**
 
+[Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk]
+
+19. Create zip file folder in your File Explorer **[Windows OS]** to compress your GitHub repository. This new compressed zip file should not exceed 500 MB and should not include parent folder from your original repository to ensure that all characters in file are configured correctly in Elastic Beanstalk. You will need to extract files from the folder and create a new compressed zip file like in [**Step 7** under 
+
+    
+21. Select files within the downloaded file of your repository and transfer them into a new compressed zip folder. This ensures that the files are zipped to Elastic Beanstalk's standards.
+ 
 [[After checking the console output responses and passing the test phase in Jenkins, you can go on to creating **IAM Roles** and the **Python Url Shortener** through **AWS Elastic Beanstalk**]]
 
 ### **[BUILD, TEST, DEPLOY]**
