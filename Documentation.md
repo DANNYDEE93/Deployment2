@@ -11,9 +11,11 @@ This project began diagramming the plan for my deployment in Draw.io including h
 
 ###### [Below you will find the necessary steps that I took to provision my own Jenkins server for my staging environment and to provosion my production environment to deploy my web applicaiton:]** 
 
+### **[Plan & Code]**
+
 1. Diagram the plan for deployment on Draw.io:
 
-![https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Plan%20for%20deployment%202.jpg]
+![Plan][https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Plan%20for%20deployment%202.jpg]
    
 2. Log into GitHub account
 3. Create new GitHub repository
@@ -23,6 +25,7 @@ This project began diagramming the plan for my deployment in Draw.io including h
 7. Unzip files by extracting Kura Lab files from the folder populated in your terminal in order for them to upload properly onto your GitHub repository 
 8. Upload Kura Lab repository files into new GitHub repository created in **Step 3**
 
+#### **[BUILD & TEST]**
    
 **9. [Create Build in Jenkins:]**
 
@@ -53,6 +56,8 @@ This project began diagramming the plan for my deployment in Draw.io including h
 12. Continue on Jenkins-->Add token associated with repository--> Select main branch
 13. Submit to generate build and select **Build Now** and pass staging environment in Jenkins
 
+#### **[MERGE]**
+
 [[Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk]]
 
 14. Create zip file folder in your File Explorer **[Windows OS]** to compress your GitHub repository. This new compressed zip file should not exceed 500 MB and should not include parent folder from your original repository to ensure that all characters in file are configured correctly in Elastic Beanstalk. You will need to extract files from the folder and create a new compressed zip file like in **Step 7**
@@ -60,7 +65,7 @@ This project began diagramming the plan for my deployment in Draw.io including h
 
 [Check console output responses and check the phases of testing and passing the staging environment.]
 
-16. For theis deployment, there was an included packaging/zip code that compressed my GitHub file and attached codes. Under the packaging phase in the console output, the location of the file within the EC2 home directory was given:
+16. For theis deployment, there was an included packaging/zip command within my applicaion code that compressed my GitHub file. Under the packaging phase in the console output, the location of the file within the EC2 home directory was given:
 
 17. ![https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20file%20location%20.png]
 
@@ -75,27 +80,27 @@ This project began diagramming the plan for my deployment in Draw.io including h
 [[After checking the console output responses and passing the test phase in Jenkins, you can go on to creating **IAM Roles** and the **Python Url Shortener** through **AWS Elastic Beanstalk**]]
 
 
-**[16.Navigating throguh AWS Elastic Beanstalk]**
+**[21.Navigating throguh AWS Elastic Beanstalk]**
 
 
 [Create **IAM Roles**]
 
-17. Sign into AWS with appropriate Account ID, IAM user name, and password
+22. Sign into AWS with appropriate Account ID, IAM user name, and password
     
-18. Select **Roles** in Dashboard--> Click **Create role**--> Select **AWS service** for trusted entity type--> Under the dropdown for AWS Services: Select **Elastic Beanstalk**--> Select **Customizable** option under cases to give Elastic Beanstalk permission to manage AWS resources of your deployment--> Click **Next**--> Click **Next**--> Enter **AWS-Elasticbeanstalk-service-role** in Role name--> "Create Role
+23. Select **Roles** in Dashboard--> Click **Create role**--> Select **AWS service** for trusted entity type--> Under the dropdown for AWS Services: Select **Elastic Beanstalk**--> Select **Customizable** option under cases to give Elastic Beanstalk permission to manage AWS resources of your deployment--> Click **Next**--> Click **Next**--> Enter **AWS-Elasticbeanstalk-service-role** in Role name--> "Create Role
     
-19. To create the second and third role: Click **Create Role**--> Select **AWS service** for trusted entity type--> Click **EC2** under common use cases--> Click Next--> Under Permission policies: Select **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**--> Click Next--> Enter **Elastic-EC2** in **Role name** field--> Click **Create Role**
+24. To create the second and third role: Click **Create Role**--> Select **AWS service** for trusted entity type--> Click **EC2** under common use cases--> Click Next--> Under Permission policies: Select **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**--> Click Next--> Enter **Elastic-EC2** in **Role name** field--> Click **Create Role**
     
 [These roles allow the instances in your web server environment to access and upload necessare files and grants permissions for Amazon Elastic Container Service to organize and cluster task within container environments.]
 
 [Create and deploy a **Python URL shortener**]
 
-20. Select **Create Application**--> Name application **URL-shortener**--> Select **Python** in Platform dropdown--> Select **Python 3.9 running on 64bit Amazon Linux 2023** in Platform branch dropdown-->Select **Upload your code**--> Type **V1** in version label field--> [Choose and upload the compressed zip file of your repository]-->Click **Next**
-21. Select **ElasticEC2** in EC2 instance profile dropdown--> Click **Next**--> Select default VPC in VPC dropdown--> Select **us-east-1a** availability zone--> Click **Next**--> Select **General Purpose (SSD)** in Root Volume type drop down--> Change the size field to 10GB-->Select **ONLY "T2.MICRO"** under **Instance Types** and **DESELECT** any other choices--> Click **Next**--> Click **Next**--> Click **Submit**
+25. Select **Create Application**--> Name application **URL-shortener**--> Select **Python** in Platform dropdown--> Select **Python 3.9 running on 64bit Amazon Linux 2023** in Platform branch dropdown-->Select **Upload your code**--> Type **V1** in version label field--> [Choose and upload the compressed zip file of your repository]-->Click **Next**
+26. Select **ElasticEC2** in EC2 instance profile dropdown--> Click **Next**--> Select default VPC in VPC dropdown--> Select **us-east-1a** availability zone--> Click **Next**--> Select **General Purpose (SSD)** in Root Volume type drop down--> Change the size field to 10GB-->Select **ONLY "T2.MICRO"** under **Instance Types** and **DESELECT** any other choices--> Click **Next**--> Click **Next**--> Click **Submit**
     
 [The URL shortener reduces the number of characters in a URL so that it is easier for Elastic Beanstalk to read, remember, and share your web service and application. AWS Elastic Beanstalk makes it easier for developers to quickly depoly and manage these applications.]
 
-33. **Upload and Deploy** your compressed zip file on Elastic Beanstalk. You will know that you passed once the **health status reads "OK"** and you get a response that your deployment has uploaded successfully to your EC2 instance.
+27. **Upload and Deploy** your compressed zip file on Elastic Beanstalk. You will know that you passed once the **health status reads "OK"** and you get a response that your deployment has uploaded successfully to your EC2 instance.
 
 
 ##### Issues/Troubleshooting:
