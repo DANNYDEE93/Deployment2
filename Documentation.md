@@ -25,13 +25,13 @@ This project began diagramming the plan for my deployment in Draw.io including h
 7. Unzip files by extracting Kura Lab files from the folder populated in your terminal in order for them to upload properly onto your GitHub repository 
 8. Upload Kura Lab repository files into new GitHub repository created in **Step 3**
 
-#### **[BUILD & TEST]**
+### **[BUILD & TEST]**
    
 **9. [Create Build in Jenkins:]**
 
 [Launch an EC2 with the necessary protocols to connect to my establish Jenkins server and web browser to provide me with admin access to utiilize my Jenkins account on my own]
 
-1. Press **Instances** in the Dashboard --> Press **Launch Instance** button--> Name web server --> Select **Ubuntu** for OS --> Select **t2.micro** --> Select suggested key pair --> Select existing secuirty group **[where the necessary security group with protocols were already created in my AWS account by my instructor]* --> Press **Launch Instance**
+1. Press **Instances** in the Dashboard --> Press **Launch Instance** button--> Name web server --> Select **Ubuntu** for OS --> Select **t2.micro** --> Select suggested key pair --> Select security groups that include: Port 22, 80 & 8080 under "Network Settings" (selected exisitng group with these protocols) --> Press **Launch Instance**
 
 [Jenkins is the main tool used in this deployment for pulling the program from the GitHub repository, then building, testing, and deploying it to a server.]  
 
@@ -56,7 +56,7 @@ This project began diagramming the plan for my deployment in Draw.io including h
 12. Continue on Jenkins-->Add token associated with repository--> Select main branch
 13. Submit to generate build and select **Build Now** and pass staging environment in Jenkins
 
-#### **[MERGE]**
+### **[MERGE]**
 
 [[Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk]]
 
@@ -79,6 +79,7 @@ This project began diagramming the plan for my deployment in Draw.io including h
 
 [[After checking the console output responses and passing the test phase in Jenkins, you can go on to creating **IAM Roles** and the **Python Url Shortener** through **AWS Elastic Beanstalk**]]
 
+### **[BUILD, TEST, DEPLOY]**
 
 **[21.Navigating throguh AWS Elastic Beanstalk]**
 
