@@ -24,19 +24,19 @@ _______________________
 
 ![Plan](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Plan%20for%20deployment%202.jpg)
    
-2. Log into GitHub account
+2. Log into GitHub account.
 
-3. Create new GitHub repository
+3. Create new GitHub repository.
 
-4. Create **Documentation.md** file to record the staging and production environment of deployment
+4. Create **Documentation.md** file to record the staging and production environment of deployment.
 
-5. Open Kura Labs c4 Deployment-1 repository and follow the provided instructions
+5. Open Kura Labs c4 Deployment-1 repository and follow the provided instructions.
 
-6. Press the **Code** tab and download files from Kura Labs repository
+6. Press the **Code** tab and download files from Kura Labs repository.
 
 7. Unzip files by extracting Kura Lab files from the folder downloaded on local computer to separate them from their parent folder and re-compress them into a new folder excluding that parent folder so that GitHub can read it properly and upload.
 
-8. Upload Kura Lab repository files into new GitHub repository created in **Step 3**
+8. Upload Kura Lab repository files into new GitHub repository created in **Step 3**.
 _______________________________
 
 ## <ins> **BUILD & TEST** </ins>
@@ -44,29 +44,29 @@ _________________________
    
 <ins> ***Create Build in Jenkins to test application in staging environment:*** </ins>
 
-***Jenkins is the main tool used in this deployment for pulling the program from the GitHub repository to build, test, and analyze the application before deploying***
+***Jenkins is the main tool used in this deployment for pulling the program from the GitHub repository to build, test, and analyze the application before deploying***.
 
 1. Launch an EC2 with the necessary protocols to connect to my Jenkins server and web browser and create an account with admin access to utilize my Jenkins account on my own:
 
-   (1a.) Press **Instances** in the Dashboard --> Press **Launch Instance** button--> Name web server --> Select **Ubuntu** for OS --> Select **t2.micro** --> Select suggested key pair --> Select security groups that include: Port 22, 80 & 8080 under "Network Settings" (selected existing group with these protocols) --> Press **Launch Instance**  
+   (1a.) Press **Instances** in the Dashboard --> Press **Launch Instance** button--> Name web server --> Select **Ubuntu** for OS --> Select **t2.micro** --> Select suggested key pair --> Select security groups that include: Port 22, 80 & 8080 under "Network Settings" (selected existing group with these protocols) --> Press **Launch Instance**.
 
 2. Within my EC2 instance: Download newest version of Python and Jenkins --> (*proceed to Jenkins*) Copy and Paste ip address of EC2 and add port 80 [**ip.address:80**] to access web browser with Jenkins. 
 
-3. (*proceed to EC2*) The web browser will show the location of admin passwrd --> Go back to EC2 and type **"sudo cat /var/lib/jenkins/secrets/initialAdminPassword"** (*proceed back to Jenkins*)
+3. (*proceed to EC2*) The web browser will show the location of admin passwrd --> Go back to EC2 and type **"sudo cat /var/lib/jenkins/secrets/initialAdminPassword"** (*proceed back to Jenkins*):
 
    ![Jenkins access](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/sudo%20cat%20admin%20psswrd.png)
 
-4. Copy and paste admin password into Jenkins browser--> Create admin account-->Install suggested plugins --> Go to **Available plugins** in the settings--> Install **Pipeline Utility Steps** --> Soft restart the browser --> Sign back into Jenkins account
+4. Copy and paste admin password into Jenkins browser--> Create admin account-->Install suggested plugins --> Go to **Available plugins** in the settings--> Install **Pipeline Utility Steps** --> Soft restart the browser --> Sign back into Jenkins account:
    
     ![Pipleline](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Download%20plugins%20for%20environment.png)
    
-5. Press **New Item** tab to create new pipeline build --> Name pipeline "First name, Last name initial" --> Select Pipeline script from SCM --> Choose Git in the dropdown from SCM
+5. Press **New Item** tab to create new pipeline build --> Name pipeline "First name, Last name initial" --> Select Pipeline script from SCM --> Choose Git in the dropdown from SCM.
 ____________________________________________________
-*Switch to Github* --> Go back to newly created GitHub repository and copy the HTTP code or URL of the repository --> Paste code into "Repository line" in Jenkins
+*Switch to Github* --> Go back to newly created GitHub repository and copy the HTTP code or URL of the repository --> Paste code into "Repository line" in Jenkins.
 
-<ins> **Create token for Jenkins using GitHub account:** </ins>
+<ins> ***Create token for Jenkins using GitHub account:*** </ins>
 
-6. Go back to your GitHub and press profile picture/icon
+6. Go back to your GitHub and press profile picture/icon,
 
 7. Select **Settings**-->**Developer Settings**-->**Personal Access Tokens**--> **Tokens(classic)**
 
@@ -78,9 +78,9 @@ _____________________________________
 
 10. Continue on Jenkins-->Add token associated with repository--> Select main branch
 
-11. **Submit** to generate build --> Select **Build Now** --> Click **Continue** in packaging phase --> Pass staging environment in Jenkins
+11. **Submit** to generate build --> Select **Build Now** --> Click **Continue** in packaging phase --> Pass staging environment in Jenkins.
 
-[**Check console output responses and check the phases of testing and passing the staging environment.**]
+***Check console output responses and check the phases of testing and passing the staging environment.***
 _______________________________________________
 *Unzipping application code file in EC2 instance*
 
@@ -88,11 +88,11 @@ _______________________________________________
 
   ![1](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20file%20location%20.png)
 
-*Locating the file and unzipping the package makes it easily readable, you can make sure that it was properly packaged, and that you can have a shorter access path for each file*
+***Locating the file and unzipping the package makes it easily readable by virtual managed services from AWS, you can make sure that it was properly packaged, and creates a shorter absolute access path for each file.***
 
 13. Go to EC2 and **cd /var/lib/jenkins/workspace/Deployment2/build/1.0.0.1.zip**
 
-14. Download unzip: **sudo apt unzip** --> then use the "unzip" command on the "1.0.0.1.zip" file to extract files through the EC2
+14. Download unzip: **sudo apt unzip** --> then use the "unzip" command on the "1.0.0.1.zip" file to extract files through the EC2:
 
   ![2](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20zip%20file_2.png)
 
@@ -103,11 +103,11 @@ ___________________
 
 <ins> ***Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk*** </ins>
 
-1. Create zip file folder in your File Explorer **[Windows OS]** to compress your GitHub repository. This new compressed zip file should not exceed 500 MB and should not include parent folder from your original repository to ensure that all characters in file are configured correctly in Elastic Beanstalk. You will need to extract files from the folder and create a new compressed zip file like in <ins>**Step 7** under **PLAN & CODE**</ins>
+1. Create zip file folder in your File Explorer **[Windows OS]** to compress your GitHub repository. This new compressed zip file should not exceed 500 MB and should not include parent folder from your original repository to ensure that all characters in file are configured correctly in Elastic Beanstalk. You will need to extract files from the folder and create a new compressed zip file like in <ins>**Step 7** under **PLAN & CODE**</ins>.
 
 2. Select files within the downloaded file of your repository and transfer them into a new compressed zip folder. This ensures that the files do not include the parent folder and is compressed to Elastic Beanstalk's standards for reading a source bundle.
  
-*After checking the console output responses and passing the test phase in Jenkins, you can go on to creating **IAM Roles** and the **Python Url Shortener** through **AWS Elastic Beanstalk***
+*After checking the console output responses and passing the test phase in Jenkins, you can go on to creating **IAM Roles** and the **Python Url Shortener** through **AWS Elastic Beanstalk***.
 
 ___________________________________________
 ## <ins>**BUILD, TEST, DEPLOY**</ins>
@@ -117,19 +117,19 @@ _______________________________
 
 <ins>***Create IAM Roles***</ins>
 
-1. Sign into AWS with appropriate Account ID, IAM user name, and password
+1. Sign into AWS with appropriate Account ID, IAM user name, and password.
     
 2. Select **Roles** in Dashboard--> Click **Create role**--> Select **AWS service** for trusted entity type--> Under the dropdown for AWS Services: Select **Elastic Beanstalk**--> Select **Customizable** option under cases to give Elastic Beanstalk permission to manage AWS resources of your deployment--> Click **Next**--> Click **Next**--> Enter **AWS-Elasticbeanstalk-service-role** in Role name--> Click **Create Role**.
     
-3. To create the second and third role: Click **Create Role**--> Select **AWS service** for trusted entity type--> Click **EC2** under common use cases--> Click Next--> Under Permission policies: Select **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**--> Click Next--> Enter **Elastic-EC2** in **Role name** field--> Click **Create Role**
+3. To create the second and third role: Click **Create Role**--> Select **AWS service** for trusted entity type--> Click **EC2** under common use cases--> Click Next--> Under Permission policies: Select **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**--> Click Next--> Enter **Elastic-EC2** in **Role name** field--> Click **Create Role**.
     
 ***These roles allow the instances in my web server environment to access and upload necessary files with AWS resources and grants permission for Amazon Elastic Container Service to organize and cluster task within container environments.***
 
 <ins>***Create and deploy a Python URL shortener***</ins>
 
-4. Select **Create Application**--> Name application **URL-shortener**--> Select **Python** in Platform dropdown--> Select **Python 3.9 running on 64bit Amazon Linux 2023** in Platform branch dropdown-->Select **Upload your code**--> Type **V1** in version label field--> **Upload** the compressed zip file of your repository -->Click **Next**
+4. Select **Create Application**--> Name application **URL-shortener**--> Select **Python** in Platform dropdown--> Select **Python 3.9 running on 64bit Amazon Linux 2023** in Platform branch dropdown-->Select **Upload your code**--> Type **V1** in version label field--> **Upload** the compressed zip file of your repository -->Click **Next**.
 
-5. Select **ElasticEC2** in EC2 instance profile dropdown--> Click **Next**--> Select default VPC in VPC dropdown--> Select **us-east-1a** availability zone--> Click **Next**--> Select **General Purpose (SSD)** in Root Volume type drop down--> Change the size field to 10GB--> Select **ONLY "T2.MICRO"** under **Instance Types** and **DESELECT** any other choices--> Click **Next**--> Click **Next**--> Click **Submit**
+5. Select **ElasticEC2** in EC2 instance profile dropdown--> Click **Next**--> Select default VPC in VPC dropdown--> Select **us-east-1a** availability zone--> Click **Next**--> Select **General Purpose (SSD)** in Root Volume type drop down--> Change the size field to 10GB--> Select **ONLY "T2.MICRO"** under **Instance Types** and **DESELECT** any other choices--> Click **Next**--> Click **Next**--> Click **Submit**.
     
 ***The URL shortener reduces the number of characters in a URL so that it is easier for Elastic Beanstalk to read, remember, and share your web service and application. AWS Elastic Beanstalk makes it easier for developers to quickly deploy and manage these applications.***
 
@@ -137,7 +137,7 @@ _______________________________
 
   ![success1](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/successful%20environment%20launch.png)
 
-7. Click **Upload and Deploy** --> Upload newly compressed zip file from <ins>**Step 1** under **MERGE**</ins> --> Wait for **Elastic Beanstalk** to upload application code, create correct application version and deploy web application -->Copy & Paste **domain URL** (*as seen in the previous image attachment under health status*) into a new browser to further check for successful deployment of my web application.
+7. Click **Upload and Deploy** --> Upload newly compressed zip file from <ins>**Step 1** under **MERGE**</ins> --> Wait for **Elastic Beanstalk** to upload application code, create correct application version and deploy web application -->Copy & Paste **domain URL** (*as seen in the previous image attachment under health status*) into a new browser to further check for successful deployment of my web application:
 
 ![success2](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/successful%20deployment%20of%20web%20app.png) 
 
