@@ -82,7 +82,7 @@ ________________________________________________________________________________
 
 12. Submit to generate build and select **Build Now** and pass staging environment in Jenkins
 
-**[Check console output responses and check the phases of testing and passing the staging environment.]**
+**Check console output responses and check the phases of testing and passing the staging environment.**
 
 *Unzipping application code file in EC2 instance*
 
@@ -109,7 +109,7 @@ ___________________
 
 2. Select files within the downloaded file of your repository and transfer them into a new compressed zip folder. This ensures that the files do not include the parent folder and is compressed to Elastic Beanstalk's standards for reading a source bundle.
  
-*[[After checking the console output responses and passing the test phase in Jenkins, you can go on to creating **IAM Roles** and the **Python Url Shortener** through **AWS Elastic Beanstalk**]]*
+*After checking the console output responses and passing the test phase in Jenkins, you can go on to creating **IAM Roles** and the **Python Url Shortener** through **AWS Elastic Beanstalk***
 
 ___________________________________________
 - ## **BUILD, TEST, DEPLOY**
