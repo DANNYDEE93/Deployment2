@@ -12,11 +12,8 @@ ___________________
 _______________________
 #### DESCRIPTION:
 __________________________
-- This project began diagramming the plan for my deployment in Draw.io including how I would use **GitHub**, **Jenkins**, and **AWS Elastic Beanstalk**. I continued to plan and build within a previously created Jenkins account by my instructor. Jenkins allowed me to create and test my deployment in a staging environment to ensure that it would return a 200 response from the server once deployed. Once my build passed the test phase in Jenkins, I created IAM roles and an EC2 instance through Elasticn Beanstalk. This allowed AWS access with the necessary permissions to update and launch my deployment through the IAM roles of **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**.
-  
-- After recieving a **Health status of Degraded**, I went into the Logs and found the issue in **/var/log/web.stdout.log** that showed the name of the application file containing my Python code was typed incorretly. Once I rectified the issue, Elastic Beanstalk was able to read my deployment properly. Finally, the EC2 instance created an applicable production environment to deploy my web applicaiton successfully. 
-
-____________________________________
+- This project began diagramming the plan for my deployment in Draw.io including how I would use **GitHub**, **Jenkins**, and **AWS Elastic Beanstalk**. I continued to create my own Jenkins server through an EC2 instance that I launched with the necessary protocols. Jenkins allowed me to create and test my deployment in a staging environment to ensure that it would return a 200 response from the server once deployed. Once my application code passed the test phase in Jenkins, I created IAM rolesand Python URL shortener. This allowed AWS access with the necessary permissions to update and launch my deployment through the IAM roles of **AWSElasticBeanstalkWebTier**, **AWSElasticBeanstalkMulticontainerDocker** and **AWSElasticBeanstalkWorkerTier**. The url shortener was utilized so that AWS could read my domain url properly-- essentially compressed my url so that it could fit neatly into Elastic Beanstalk's requirements for deployment.
+  ____________________________________
 ###### **Below you will find the necessary steps that I took to provision my own Jenkins server for my staging environment and to provosion my production environment to deploy my web applicaiton:** 
 
 _____________________________________
