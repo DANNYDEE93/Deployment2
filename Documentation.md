@@ -42,7 +42,7 @@ _______________________________
 ## <ins> **BUILD & TEST** </ins>
 _________________________
    
-<ins> **Create Build in Jenkins to test application in staging environment:** </ins>
+<ins> ***Create Build in Jenkins to test application in staging environment:*** </ins>
 
 ***Jenkins is the main tool used in this deployment for pulling the program from the GitHub repository to build, test, and analyze the application before deploying***
 
