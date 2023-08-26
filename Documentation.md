@@ -78,7 +78,7 @@ _____________________________________
 
 11. Continue on Jenkins-->Add token associated with repository--> Select main branch
 
-12. Submit to generate build and select **Build Now** and pass staging environment in Jenkins
+12. **Submit** to generate build --> Select **Build Now** --> Click **Continue** in packaging phase --> Pass staging environment in Jenkins
 
 **Check console output responses and check the phases of testing and passing the staging environment.**
 _______________________________________________
@@ -103,7 +103,7 @@ ___________________
 
 *[Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk]*
 
-1. Create zip file folder in your File Explorer **[Windows OS]** to compress your GitHub repository. This new compressed zip file should not exceed 500 MB and should not include parent folder from your original repository to ensure that all characters in file are configured correctly in Elastic Beanstalk. You will need to extract files from the folder and create a new compressed zip file like in [**Step 7** under **PLAN & CODE**]
+1. Create zip file folder in your File Explorer **[Windows OS]** to compress your GitHub repository. This new compressed zip file should not exceed 500 MB and should not include parent folder from your original repository to ensure that all characters in file are configured correctly in Elastic Beanstalk. You will need to extract files from the folder and create a new compressed zip file like in <ins>**Step 7** under **PLAN & CODE**</ins>
 
 2. Select files within the downloaded file of your repository and transfer them into a new compressed zip folder. This ensures that the files do not include the parent folder and is compressed to Elastic Beanstalk's standards for reading a source bundle.
  
