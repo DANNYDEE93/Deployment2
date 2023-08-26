@@ -20,7 +20,7 @@ _____________________________________
 ## <ins> **PLAN & CODE** </ins>
 _______________________
 
-<ins> **1. Diagram the plan for deployment on Draw.io:** </ins>
+<ins> ***1. Diagram the plan for deployment on Draw.io:*** </ins>
 
 ![Plan](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Plan%20for%20deployment%202.jpg)
    
@@ -101,7 +101,7 @@ _______________________
 ## <ins> **MERGE** </ins>
 ___________________
 
-<ins> **Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk** </ins>
+<ins> ***Download GitHub Repository to unzip files and re-zip them to upload onto AWS Elastic Beanstalk*** </ins>
 
 1. Create zip file folder in your File Explorer **[Windows OS]** to compress your GitHub repository. This new compressed zip file should not exceed 500 MB and should not include parent folder from your original repository to ensure that all characters in file are configured correctly in Elastic Beanstalk. You will need to extract files from the folder and create a new compressed zip file like in <ins>**Step 7** under **PLAN & CODE**</ins>
 
@@ -115,7 +115,7 @@ _______________________________
 
 <ins> **Navigating through AWS Elastic Beanstalk** </ins>
 
-<ins> **Create IAM Roles** </ins>
+<ins>***Create IAM Roles***</ins>
 
 1. Sign into AWS with appropriate Account ID, IAM user name, and password
     
@@ -125,7 +125,7 @@ _______________________________
     
 ***These roles allow the instances in my web server environment to access and upload necessary files with AWS resources and grants permission for Amazon Elastic Container Service to organize and cluster task within container environments.***
 
-<ins>**Create and deploy a Python URL shortener**</ins>
+<ins>***Create and deploy a Python URL shortener***</ins>
 
 4. Select **Create Application**--> Name application **URL-shortener**--> Select **Python** in Platform dropdown--> Select **Python 3.9 running on 64bit Amazon Linux 2023** in Platform branch dropdown-->Select **Upload your code**--> Type **V1** in version label field--> **Upload** the compressed zip file of your repository -->Click **Next**
 
