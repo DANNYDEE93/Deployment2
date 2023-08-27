@@ -22,6 +22,7 @@ _______________________
 
 <ins> ***1. Diagram the plan for deployment on Draw.io:*** </ins>
 
+
 ![Plan](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Plan%20for%20deployment%202.jpg)
    
 2. Log into GitHub account.
@@ -54,9 +55,11 @@ _________________________
 
 3. (*proceed to EC2*) The web browser will show the location of admin passwrd --> Go back to EC2 and type **"sudo cat /var/lib/jenkins/secrets/initialAdminPassword"** (*proceed back to Jenkins*):
 
+
    ![Jenkins access](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/sudo%20cat%20admin%20psswrd.png)
 
 4. Copy and paste admin password into Jenkins browser--> Create admin account-->Install suggested plugins --> Go to **Available plugins** in the settings--> Install **Pipeline Utility Steps** --> Soft restart the browser --> Sign back into Jenkins account:
+
    
     ![Pipleline](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Download%20plugins%20for%20environment.png)
    
@@ -86,6 +89,7 @@ _______________________________________________
 
 12. For this deployment, there was an included packaging/zip command within my application code that compressed my GitHub file. Under the packaging phase in the console output, the location of the file within the EC2 home directory was given:
 
+
   ![1](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20file%20location%20.png)
 
 ***Locating the file and unzipping the package makes it easily readable by virtual managed services from AWS, you can make sure that it was properly packaged, and creates a shorter absolute access path for each file.***
@@ -93,6 +97,7 @@ _______________________________________________
 13. Go to EC2 and **cd /var/lib/jenkins/workspace/Deployment2/build/1.0.0.1.zip**
 
 14. Download unzip: **sudo apt unzip** --> then use the "unzip" command on the "1.0.0.1.zip" file to extract files through the EC2:
+
 
   ![2](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/Jenkins%20compressed%20zip%20file_2.png)
 
@@ -117,7 +122,7 @@ _______________________________
 
 <ins>***Create IAM Roles***</ins>
 
-1. Sign into AWS with appropriate Account ID, IAM user name, and password.
+1. Sign into Amazon AWS console with appropriate **Account ID, IAM user name, and password**.
     
 2. Select **Roles** in Dashboard--> Click **Create role**--> Select **AWS service** for trusted entity type--> Under the dropdown for AWS Services: Select **Elastic Beanstalk**--> Select **Customizable** option under cases to give Elastic Beanstalk permission to manage AWS resources of your deployment--> Click **Next**--> Click **Next**--> Enter **AWS-Elasticbeanstalk-service-role** in Role name--> Click **Create Role**.
     
@@ -135,9 +140,11 @@ _______________________________
 
 6. Wait for **Elastic Beanstalk** to launch virtual production environment:
 
-  ![success1](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/successful%20environment%20launch.png)
+
+![success1](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/successful%20environment%20launch.png)
 
 7. Click **Upload and Deploy** --> Upload newly compressed zip file from <ins>**Step 1** under **MERGE**</ins> --> Wait for **Elastic Beanstalk** to upload application code, create correct application version and deploy web application -->Copy & Paste **domain URL** (*as seen in the previous image attachment under health status*) into a new browser to further check for successful deployment of my web application:
+
 
 ![success2](https://github.com/DANNYDEE93/Deployment2/blob/main/Images%20of%20Deployment%202/successful%20deployment%20of%20web%20app.png) 
 
@@ -145,3 +152,8 @@ ____________________________________
 ## <ins>TROUBLESHOOTING:</ins>
 ____________________________________
 My first attempt to create my Jenkins account, I skipped the option to create "Admin Username and Password". I was able to upload my build but my test was unsuccessful. In order to troubleshoot this issue, **Steps 1-5** under **BUILD & TEST**. I had to create a new EC2 instance, establish a new connection with my Jenkins server, get admin password from EC2 to create a new Jenkins admin account, install the necessary "Pipeline Utility Steps" on top of the suggested plugins, and connect to my GitHub repository to upload my Jenkins code to build and test my application in a staging environment.
+
+______________________________________
+## <ins>CONCLUSION:</ins>
+________________________________________
+This deployment helped me understand the different environments for staging and producing my web application on a greater level. To optimize the efficacy of this deployment in the future, I would take more screenshots of each process to make it easier for other developers to reference my process of deployment in order to attempt it themselves. Lastly, instead of repeating steps from previous repositories within my documentation/readme.md file, I would just reference the other repositories that include the certain steps that I continuously repeat. This can help me utilize my time better to focus on explaining the different aspects of my deployments that I have not done before. 
